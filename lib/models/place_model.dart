@@ -3,7 +3,7 @@ class Place {
   bool? isActive;
   String? title;
   String? placeImage;
-  double? shippingPrice;
+  num? shippingPrice;
   Place({
     this.id,
     this.title,

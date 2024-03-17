@@ -9,6 +9,15 @@ class CartProvider {
 
   final onlineProducts = productsList;
 
+  num _total = 0;
+  num get totalCartPrice {
+    _total = 0;
+    for (final item in cartITems) {
+      _total += item.totalPrice;
+    }
+    return _total;
+  }
+
   void updateCart() {
     //1- TODO: implement updateCart
     //2- ptint items after update
@@ -29,6 +38,7 @@ class CartProvider {
       print('CartItem total price: ${item.totalPrice}');
       print('############ END of cartItem id: ${item.id} ##########');
     }
+    print("Total cart price: $totalCartPrice");
   }
 
   _printCartProduct(CartProduct product) {

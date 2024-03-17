@@ -16,6 +16,7 @@ class CartItem {
     for (final product in products) {
       totalPrice += product.totalPrice;
     }
+    totalPrice += place.shippingPrice!;
     return totalPrice;
   }
 }

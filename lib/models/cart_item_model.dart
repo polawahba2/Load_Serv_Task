@@ -3,8 +3,10 @@ import 'package:update_cart/models/product_model.dart';
 
 class CartItem {
   int id;
-  Place place;
-  List<CartProduct> products;
+  Place
+      place; //! first i will check if thie place is still avalible and all its information is still ok.
+  List<CartProduct>
+      products; //! second i'll also check if every single cart product is still ok.
   num totalPrice;
   CartItem(
       {required this.id,

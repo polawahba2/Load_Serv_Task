@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:update_cart/cart_rpovider/cart_provider.dart';
+import 'package:update_cart/widgets/products_dialog.dart';
+
+import 'models/cart_item_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +28,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
   final String title;
 
   @override
@@ -34,8 +36,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool isChanged = false;
+  late List<CartItem> cartItems;
   updateCart() {
-    CartProvider().updateCart();
+    cartItems = CartProvider().updateCart();
+
     setState(() {
       // Notify user of the changes you have made on the home page.
       // isChanged = true;
@@ -54,7 +58,16 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextButton(
-                onPressed: () => updateCart(),
+                onPressed: () {
+                  updateCart();
+
+                  showDialog(
+                    context: context,
+                    builder: (_) => Dialog(
+                      child: ProductsDialog(cartItems: cartItems),
+                    ),
+                  );
+                },
                 child: const Text('Press To Update Cart')),
             const SizedBox(height: 20),
             const Text(

@@ -1,8 +1,8 @@
 class Place {
-  int? id;
-  bool? isActive;
-  String? title;
-  String? placeImage;
+  final int? id;
+  final bool? isActive;
+  final String? title;
+  final String? placeImage;
   num? shippingPrice;
   Place({
     this.id,
